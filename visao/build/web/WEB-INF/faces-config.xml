@@ -22,5 +22,10 @@
             <to-view-id>/index.jsf</to-view-id>
         </navigation-case>
         
+        <navigation-case>
+            <description>solicitarReserva</description>
+            <from-outcome>solicitarReserva</from-outcome>
+            <to-view-id>/solicitarReserva.jsf</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

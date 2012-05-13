@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+         <link type="text/css" rel="stylesheet" href="../themes/bluesky/skin.css" />
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <f:view>
+    <p:layout fullPage="true">
+        <p:layoutUnit position="north" size="100" header="" resizable="false" closable="false" collapsible="false">               
+        <h:form id="logout">
+            Bem vindo, 
+            <h:outputText id="email" value="#{autenticacaoMB.usuarioVO.nome}" />.
+            <h:commandButton id="logout" value="Sair" 
+                           action="#{autenticacaoMB.logout()}" />
+        </h:form>
+    </p:layoutUnit>
+        
+    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
+        <h:outputText value="South unit content." />
+    </p:layoutUnit>
+    
+        
+    <p:layoutUnit position="west" size="200" header="Menu" resizable="true" closable="true" collapsible="true">
+        <h:form id="menu">
+            <p:growl id="messages"/>
+            <p:menu style="width: 180px">  
+                <p:submenu label="Reservas">  
+                    <p:menuitem value="Solicitar Reserva" action="solicitarReserva"/>  
+                    <p:menuitem value="Update" update="messages" icon="ui-icon-arrowrefresh-1-w"/>  
+                </p:submenu>  
+                <p:submenu label="Non-Ajax Menuitem">  
+                    <p:menuitem value="Delete" update="messages" ajax="false" icon="ui-icon-close"/>  
+                </p:submenu>  
+                <p:submenu label="Navigations">  
+                    <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home"/>  
+                    <p:menuitem value="TouchFaces" url="/touch" icon="ui-icon-star"/>  
+                </p:submenu>  
+            </p:menu> 
+        </h:form>
+    </p:layoutUnit>
+
+
+    <p:layoutUnit position="center">
+        <div id="content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+    </p:layoutUnit>
+
+</p:layout>          
+            </f:view>
+    </h:body>
+
+</html>

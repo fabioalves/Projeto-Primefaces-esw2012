@@ -15,10 +15,6 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.primefaces.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${reference.bo.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
@@ -27,15 +23,19 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.redmond-1.0.1.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${libs.hibernate-persistence.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.postgresql-9.1-901.jdbc3.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.primefaces-3.2.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.redmond-1.0.4.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

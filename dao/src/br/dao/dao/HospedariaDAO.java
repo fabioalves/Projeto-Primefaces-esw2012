@@ -7,6 +7,7 @@ package br.dao.dao;
 import br.dao.utils.DAO;
 import br.dao.utils.FabricaEntityManager;
 import br.dao.utils.PersistenciaException;
+import br.dao.vo.CidadeVO;
 import br.dao.vo.HospedariaVO;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -30,6 +31,18 @@ public class HospedariaDAO extends DAO<HospedariaVO> {
     {
         try {
             return this.entityManager.find(HospedariaVO.class,codigo);
+        } catch (PersistenceException ex) {
+            throw new PersistenciaException("Não foi possível encontrar as hospedarias");
+        }
+    }
+
+    public List<HospedariaVO> buscarPorNomeCidade(CidadeVO cidadeVO) throws PersistenciaException
+    {
+        try {
+            Query query=this.entityManager.createQuery("FROM HospedariaVO "+
+                    "WHERE CidadeVO.nome like %"+cidadeVO.getNome()+"% ORDER BY nome");
+            return query.getResultList();
+                       
         } catch (PersistenceException ex) {
             throw new PersistenciaException("Não foi possível encontrar as hospedarias");
         }

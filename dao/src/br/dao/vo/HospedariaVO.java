@@ -36,6 +36,9 @@ public class HospedariaVO
     private String localizacaoGeografica;
     @Column(nullable=false,precision=5,scale=2)
     private float valorDiaria;
+    
+    @ManyToOne(fetch= FetchType.EAGER)
+    private UsuarioVO usuarioVO;
 
     /**
      * @return the id
@@ -175,5 +178,19 @@ public class HospedariaVO
      */
     public void setValorDiaria(float valorDiaria) {
         this.valorDiaria = valorDiaria;
+    }
+
+    /**
+     * @return the hospedariaVO
+     */
+    public UsuarioVO getUsuarioVO() {
+        return usuarioVO;
+    }
+
+    /**
+     * @param hospedariaVO the hospedariaVO to set
+     */
+    public void setUsuarioVO(UsuarioVO usuarioVO) {
+        this.usuarioVO = usuarioVO;
     }
 }

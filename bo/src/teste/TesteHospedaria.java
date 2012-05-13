@@ -34,6 +34,10 @@ public class TesteHospedaria {
         ho.setCelular("");
         ho.setValorDiaria(100);
         
+        UsuarioVO usuarioVO = new UsuarioVO();
+        usuarioVO = new Usuario().buscarPorCodigo(10);
+        ho.setUsuarioVO(usuarioVO);
+        
         new Hospedaria().inserir(ho);
         
         

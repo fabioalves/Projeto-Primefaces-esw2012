@@ -7,6 +7,7 @@ package br.bo.bo;
 import br.dao.dao.HospedariaDAO;
 import br.dao.utils.FabricaEntityManager;
 import br.dao.utils.PersistenciaException;
+import br.dao.vo.CidadeVO;
 import br.dao.vo.HospedariaVO;
 import java.util.List;
 
@@ -66,6 +67,14 @@ public class Hospedaria {
     public HospedariaVO buscarPorCodigo(int codigo) throws NegocioException{
         try {
             return hospedariaDAO.buscarPorCodigo(codigo);
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Erro na seleção por codigo - "+ex.getMessage());
+        }
+    }
+    
+    public List<HospedariaVO> buscarPorNomeCidade(CidadeVO cidadeVO) throws NegocioException{
+        try {
+            return hospedariaDAO.buscarPorNomeCidade(cidadeVO);
         } catch (PersistenciaException ex) {
             throw new NegocioException("Erro na seleção por codigo - "+ex.getMessage());
         }
