@@ -72,9 +72,9 @@ public class Hospedaria {
         }
     }
     
-    public List<HospedariaVO> buscarPorNomeCidade(CidadeVO cidadeVO) throws NegocioException{
+    public List<HospedariaVO> buscarPorNomeCidade(String nomeCidade) throws NegocioException{
         try {
-            return hospedariaDAO.buscarPorNomeCidade(cidadeVO);
+            return hospedariaDAO.buscarPorNomeCidade(nomeCidade);
         } catch (PersistenciaException ex) {
             throw new NegocioException("Erro na seleção por codigo - "+ex.getMessage());
         }

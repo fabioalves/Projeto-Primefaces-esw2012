@@ -8,22 +8,26 @@ import br.bo.bo.Hospedaria;
 import br.bo.bo.NegocioException;
 import br.dao.vo.CidadeVO;
 import br.dao.vo.HospedariaVO;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Fabio
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class SolicitarReservaMB {
 
     private Date periodo1;
     private Date periodo2;
     private CidadeVO cidadeVO;
+    
+    private List<HospedariaVO> listHospedaria = new ArrayList<HospedariaVO>();
     
     /**
      * Creates a new instance of SolicitarReservaMB
@@ -32,15 +36,22 @@ public class SolicitarReservaMB {
         cidadeVO = new CidadeVO();
     }
     
-    public void buscar() throws NegocioException
+    public String buscar()  throws NegocioException
     {
         List<HospedariaVO> lista = this.getHospedarias();
+        for(HospedariaVO l : lista)
+        {
+            System.out.println(l.getNome());
+            getListHospedaria().add(l);
+        }
+        
+        return null;
     }
     
     private List<HospedariaVO> getHospedarias() throws NegocioException
     {
         Hospedaria hosp = new Hospedaria();
-        return hosp.buscarPorNomeCidade(cidadeVO);
+        return hosp.buscarPorNomeCidade("%"+cidadeVO.getNome()+"%");
     }
 
     /**
@@ -83,5 +94,19 @@ public class SolicitarReservaMB {
      */
     public void setCidadeVO(CidadeVO cidadeVO) {
         this.cidadeVO = cidadeVO;
+    }
+
+    /**
+     * @return the listHospedaria
+     */
+    public List<HospedariaVO> getListHospedaria() {
+        return listHospedaria;
+    }
+
+    /**
+     * @param listHospedaria the listHospedaria to set
+     */
+    public void setListHospedaria(List<HospedariaVO> listHospedaria) {
+        this.listHospedaria = listHospedaria;
     }
 }

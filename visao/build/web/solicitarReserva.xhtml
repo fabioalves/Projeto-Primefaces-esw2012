@@ -3,7 +3,8 @@
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="./templates/template.xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="content">
         <p>
@@ -16,7 +17,16 @@
             até <p:calendar value="#{solicitarReservaMB.periodo2}" id="periodo2" showButtonPanel="true"/>  
         </p>
         <p>
-            <h:commandButton value="Buscar" action="#{solicitarReservaMB.buscar()}" />            
+            <h:commandButton value="Buscar" action="#{solicitarReservaMB.buscar}" />            
+        </p>
+        
+        <p>
+                    <p:dataList id="datalist" value="#{solicitarReservaMB.listHospedaria}" var="hosp" type="definition">  
+                
+                <f:facet name="description">  
+                    <h:outputText value="#{hosp.nome}" />
+                </f:facet>  
+            </p:dataList>  
         </p>
     </ui:define>
 

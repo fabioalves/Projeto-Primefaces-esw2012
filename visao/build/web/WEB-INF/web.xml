@@ -23,7 +23,7 @@
     <welcome-file-list>
         <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>
-    
+    <!--
     <filter>
         <filter-name>restrict</filter-name>
         <filter-class>br.visao.filter.RestrictPageFilter</filter-class>
@@ -32,4 +32,5 @@
         <filter-name>restrict</filter-name>
         <url-pattern>*.jsf</url-pattern>
     </filter-mapping>
+    -->
 </web-app>
