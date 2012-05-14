@@ -40,8 +40,8 @@ public class HospedariaDAO extends DAO<HospedariaVO> {
     {
         try {
             Query query=this.entityManager.createQuery("FROM HospedariaVO h "+
-                    "WHERE h.cidade.nome like :nm ORDER BY nome");
-            query.setParameter("nm", nomeCidade);
+                    "WHERE LOWER(h.cidade.nome) like :nm ORDER BY nome");
+            query.setParameter("nm", nomeCidade.toLowerCase());
 
             return query.getResultList();
                        
@@ -60,6 +60,20 @@ public class HospedariaDAO extends DAO<HospedariaVO> {
             throw new PersistenciaException("Não foi possível encontrar as hospedarias.");
         }                
     }
+    public List<HospedariaVO> buscarPorAnfitriao(int usuarioID) throws PersistenciaException
+    {
+        try 
+        {
+            Query query=this.entityManager.createQuery("FROM HospedariaVO h "+ 
+                    "WHERE h.usuarioVO.id = :usid ORDER BY Nome");
+            query.setParameter("usid", usuarioID);
+            
+            return query.getResultList();                    
+        } catch (PersistenceException ex) {
+            throw new PersistenciaException("Não foi possível encontrar as hospedarias.");
+        }                
+    }
+    
     
     public List<HospedariaVO> buscarPorNome(String nome) throws PersistenciaException
     {

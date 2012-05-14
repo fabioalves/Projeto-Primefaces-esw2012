@@ -87,6 +87,14 @@ public class Hospedaria {
             throw new NegocioException("Erro na seleção por codigo - "+ex.getMessage());
         }
     }
+    
+    public List<HospedariaVO> buscarPorAnfitriao(int usuarioID) throws NegocioException {
+        try {
+            return hospedariaDAO.buscarPorAnfitriao(usuarioID);
+        } catch (PersistenciaException ex) {
+            throw new NegocioException("Erro na seleção por codigo - "+ex.getMessage());
+        }
+    }
 
     private String validarDados(HospedariaVO hospedariaVO) {
 

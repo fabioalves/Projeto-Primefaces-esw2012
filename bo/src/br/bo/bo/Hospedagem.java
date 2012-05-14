@@ -11,6 +11,8 @@ import br.dao.utils.PersistenciaException;
 import br.dao.vo.HospedagemVO;
 import br.dao.vo.UsuarioVO;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,6 +31,16 @@ public class Hospedagem {
     
     public List<HospedagemVO> buscarHospedagemPorUsuario(UsuarioVO usuarioVO) throws PersistenciaException {
         return this.hospedagemDAO.getListHospedagemPorUsuario(usuarioVO);
+    }
+    
+    public void reservar(HospedagemVO hospedagemVO) throws NegocioException {
+        try {
+            this.hospedagemDAO.iniciarTransacao();
+            this.hospedagemDAO.incluir(hospedagemVO);
+            this.hospedagemDAO.confirmarTransacao();
+        } catch (PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
     }
     
 }

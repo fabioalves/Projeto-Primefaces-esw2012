@@ -18,7 +18,7 @@ import javax.persistence.Query;
  *
  * @author fabio
  */
-public class HospedagemDAO extends DAO<HospedagemDAO> {
+public class HospedagemDAO extends DAO<HospedagemVO> {
     
     public HospedagemDAO()throws PersistenciaException{
         super(FabricaEntityManager.getEntityManager());
