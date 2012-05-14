@@ -14,18 +14,43 @@
             <description>paginaInicial</description>
             <from-outcome>paginaInicial</from-outcome>
             <to-view-id>/paginaInicial.jsf</to-view-id>
+            <redirect/>
         </navigation-case>
 
         <navigation-case>
             <description>login</description>
             <from-outcome>login</from-outcome>
             <to-view-id>/index.jsf</to-view-id>
+            <redirect/>
         </navigation-case>
         
         <navigation-case>
             <description>solicitarReserva</description>
             <from-outcome>solicitarReserva</from-outcome>
             <to-view-id>/solicitarReserva.jsf</to-view-id>
+            <redirect/>
         </navigation-case>
+        <navigation-case>
+            <description>detalhesHospedaria</description>
+            <from-outcome>detalhesHospedaria</from-outcome>
+            <to-view-id>/detalhesHospedaria.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <description>listarHospedarias</description>
+            <from-outcome>listarHospedarias</from-outcome>
+            <to-view-id>/listarHospedarias.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <description>consultarReservaHospedaria</description>
+            <from-outcome>consultarReservaHospedaria</from-outcome>
+            <to-view-id>/consultarReservaHospedaria.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        
+        
     </navigation-rule>
 </faces-config>

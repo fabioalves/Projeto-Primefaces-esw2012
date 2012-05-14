@@ -20,4 +20,13 @@ public class Util {
                 .put(sessionName, object);
     }
     
+    public static Object getSession(String sessionName)
+    {
+        return FacesContext.
+                getCurrentInstance().
+                getExternalContext().
+                getSessionMap().
+                get(sessionName);  
+    }
+    
 }

@@ -7,27 +7,37 @@
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="content">
-        <p>
-        Local:
-        <h:inputText id="txtlocal" value="#{solicitarReservaMB.cidadeVO.nome}" />
-        </p>
-        <p>
-            Período:
-            de <p:calendar value="#{solicitarReservaMB.periodo1}" id="periodo1" showButtonPanel="true"/> 
-            até <p:calendar value="#{solicitarReservaMB.periodo2}" id="periodo2" showButtonPanel="true"/>  
-        </p>
-        <p>
-            <h:commandButton value="Buscar" action="#{solicitarReservaMB.buscar}" />            
-        </p>
+        <h:form id="busca">
+            <p>
+            Local:
+            <h:inputText id="txtlocal" value="#{solicitarReservaMB.cidadeVO.nome}" />
+            </p>
+            <p>
+                Período:
+                de <p:calendar value="#{solicitarReservaMB.periodo1}" id="periodo1" showButtonPanel="true"/> 
+                até <p:calendar value="#{solicitarReservaMB.periodo2}" id="periodo2" showButtonPanel="true"/>  
+            </p>
+            <p>
+                <p:commandButton value="Buscar" type="submit" action="#{solicitarReservaMB.buscar()}"/>
+            </p>
         
-        <p>
-                    <p:dataList id="datalist" value="#{solicitarReservaMB.listHospedaria}" var="hosp" type="definition">  
-                
-                <f:facet name="description">  
-                    <h:outputText value="#{hosp.nome}" />
-                </f:facet>  
-            </p:dataList>  
-        </p>
+            <p>            
+                <h:dataTable id="datalist" value="#{solicitarReservaMB.listHospedaria}" var="hosp">  
+                    <h:column>
+                        <f:facet name="header">Nome:</f:facet>
+                            <h:outputText value="#{hosp.nome}" />                        
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputText value="#{hosp.cidade.nome}" />                        
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Selecionar</f:facet>
+                        <h:commandLink id="selecionar" value="Selecionar" action="#{solicitarReservaMB.selecionar()}"/>
+                    </h:column>
+                </h:dataTable>  
+            </p>
+       </h:form>
     </ui:define>
 
 </ui:composition>

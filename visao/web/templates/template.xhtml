@@ -35,16 +35,14 @@
         <h:form id="menu">
             <p:growl id="messages"/>
             <p:menu style="width: 180px">  
-                <p:submenu label="Reservas">  
+                <p:submenu label="Minhas Reservas">  
                     <p:menuitem value="Solicitar Reserva" action="solicitarReserva"/>  
-                    <p:menuitem value="Update" update="messages" icon="ui-icon-arrowrefresh-1-w"/>  
                 </p:submenu>  
-                <p:submenu label="Non-Ajax Menuitem">  
-                    <p:menuitem value="Delete" update="messages" ajax="false" icon="ui-icon-close"/>  
+                <p:submenu label="Minhas Hospedarias">  
+                    <p:menuitem value="Consultar Reserva" action="listarHospedarias"/>  
                 </p:submenu>  
                 <p:submenu label="Navigations">  
-                    <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home"/>  
-                    <p:menuitem value="TouchFaces" url="/touch" icon="ui-icon-star"/>  
+                    <p:menuitem value="Home" action="paginaInicial" icon="ui-icon-home"/>
                 </p:submenu>  
             </p:menu> 
         </h:form>
