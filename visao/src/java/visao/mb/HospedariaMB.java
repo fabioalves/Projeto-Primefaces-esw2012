@@ -9,6 +9,7 @@ import br.bo.bo.NegocioException;
 import br.dao.vo.HospedariaVO;
 import br.dao.vo.UsuarioVO;
 import br.visao.util.Util;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -38,11 +39,13 @@ public class HospedariaMB {
         UsuarioVO usuarioVO = (UsuarioVO)Util.getSession("usuario");
         
         Hospedaria hospedaria = new Hospedaria();
-        listHospedaria = new ListDataModel<HospedariaVO>(hospedaria.buscarPorAnfitriao(usuarioVO.getId()));        
+        List<HospedariaVO> lista = hospedaria.buscarPorAnfitriao(usuarioVO.getId());
+        listHospedaria = new ListDataModel<HospedariaVO>(lista);        
     }
     
     public String selecionarHospedaria() {
         setHospedariaSelecionada((HospedariaVO)listHospedaria.getRowData());
+        Util.setSession("hospedariaSelecionada", hospedariaSelecionada);
         
         return "consultarReservaHospedaria";
     }

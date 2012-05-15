@@ -71,7 +71,7 @@ public class SolicitarReservaMB {
         UsuarioVO usuarioVO = (UsuarioVO) Util.getSession("usuario");
         
         hospVO.setUsuario(usuarioVO);
-        hospVO.setSituacao('A');
+        hospVO.setSituacao('0');
         hospVO.setComentario("");
         
         Hospedagem hospedagem = new Hospedagem();

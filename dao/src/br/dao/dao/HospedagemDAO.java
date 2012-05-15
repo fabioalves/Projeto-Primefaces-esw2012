@@ -9,6 +9,7 @@ import br.dao.utils.FabricaEntityManager;
 import br.dao.utils.PersistenciaException;
 import br.dao.vo.HospedagemVO;
 import br.dao.vo.UsuarioVO;
+import br.dao.vo.HospedariaVO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
@@ -30,8 +31,8 @@ public class HospedagemDAO extends DAO<HospedagemVO> {
     
     public HospedagemVO getHospedagemPorCodigo(int codigo) throws PersistenciaException
     {
-        try {            
-            return this.entityManager.find(HospedagemVO.class, codigo);            
+        try {           
+            return this.entityManager.find(HospedagemVO.class, codigo);
         } catch(PersistenceException e) {
             throw new PersistenciaException(e.getMessage());
         }
@@ -41,8 +42,21 @@ public class HospedagemDAO extends DAO<HospedagemVO> {
     public List<HospedagemVO> getListHospedagemPorUsuario(UsuarioVO usuarioVO) throws PersistenciaException
     {
         try {
-            Query query=this.entityManager.createQuery("FROM HospedagemVO hospedagem WHERE hospedagem.Usuario.getId() = :idusuario");
+            Query query=this.entityManager.createQuery("FROM HospedagemVO hospedagem WHERE hospedagem.usuario.id = :idusuario");
             query.setParameter("idusuario", usuarioVO.getId());
+            return query.getResultList();     
+        
+        } catch(PersistenceException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
+    }
+    
+    public List<HospedagemVO> getListHospedagemPorHospedaria(HospedariaVO hospedariaVO) throws PersistenciaException
+    {
+        try {
+            Query query=this.entityManager.createQuery("FROM HospedagemVO hospedagem "+
+                    "WHERE hospedagem.hospedaria.id = :id");
+            query.setParameter("id", hospedariaVO.getId());
             return query.getResultList();     
         
         } catch(PersistenceException e) {

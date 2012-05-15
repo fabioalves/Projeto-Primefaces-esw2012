@@ -17,6 +17,26 @@
                     <f:facet name="header">Dia Fim</f:facet>
                     <h:outputText value="#{reserva.diaFim.toLocaleString()}" />
                 </h:column>
+                <h:column>
+                    <f:facet name="header">Situação</f:facet>
+                    <h:outputText value="#{reservaMB.getSituacaoReserva(reserva.situacao)}"/>
+                </h:column>
+                
+                    
+                        <h:column>
+                            <h:form id="frmaprovar">
+                            <f:facet name="header">Aprovar</f:facet>
+                            <h:commandLink value="Aprovar" action="#{reservaMB.aprovar()}" />
+                            </h:form>
+                        </h:column>
+                        <h:column>
+                            <h:form id="frmreprovar">
+                            <f:facet name="header">Não Aprovar</f:facet>
+                            <h:commandLink value="Não Aprovar" action="#{reservaMB.naoAprovar()}"/>
+                            </h:form>
+                        </h:column>
+                            
+                    
             </h:dataTable>
         </p:panel>
     </ui:define>

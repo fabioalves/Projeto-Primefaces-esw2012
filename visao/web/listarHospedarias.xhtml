@@ -12,11 +12,11 @@
                 <h:column>
                     <f:facet name="header">Nome</f:facet>
                     <h:outputText value="#{hosp.nome}" />
-                </h:column>
+                </h:column>                
                 <h:column>
                     <f:facet name="header">Selecionar</f:facet>
                     <h:form id="selecionarHosp">
-                        <h:commandLink value="Selecionar" />
+                        <h:commandLink value="Selecionar" action="#{hospedariaMB.selecionarHospedaria()}" />
                     </h:form>
                 </h:column>
             </h:dataTable>
