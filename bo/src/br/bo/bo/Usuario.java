@@ -61,7 +61,9 @@ public class Usuario {
         }
 
         try {
-           usuarioDAO.incluir(usuarioVO);
+            usuarioDAO.iniciarTransacao();
+            usuarioDAO.incluir(usuarioVO);
+            usuarioDAO.confirmarTransacao();
         } catch (PersistenciaException ex) {
             throw new NegocioException("Erro ao incluir novo grupo de produto - " + ex.getMessage());
         }

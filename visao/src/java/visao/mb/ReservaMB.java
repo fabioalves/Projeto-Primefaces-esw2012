@@ -12,6 +12,7 @@ import br.dao.vo.HospedariaVO;
 import br.dao.vo.UsuarioVO;
 import br.visao.util.Util;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -21,7 +22,7 @@ import javax.faces.model.ListDataModel;
  * @author Fabio
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class ReservaMB {
 
     private DataModel<HospedagemVO> listReserva;
@@ -38,6 +39,8 @@ public class ReservaMB {
         
         setHospedariaVO((HospedariaVO)Util.getSession("hospedariaSelecionada"));
                 
+        System.out.println("--" + hospedariaVO.getNome());
+        
         listReserva = new ListDataModel<HospedagemVO>(
                 hospedagem.buscarHospedagemPorHospedaria(getHospedariaVO())
                 );        
