@@ -39,7 +39,7 @@ public class UsuarioVO
     @Column(length=50,nullable=false)
     private String cep;
     
-    @Column(length=10,nullable=false)
+    @Column(length=15,nullable=false)
     private String telefone;
     
     @Column(length=15,nullable=false)

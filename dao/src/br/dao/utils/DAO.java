@@ -1,7 +1,10 @@
 package br.dao.utils;
 
+import java.sql.SQLException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
+import org.hibernate.HibernateException;
+import org.hibernate.JDBCException;
 
 public class DAO<VO> {
 
@@ -24,8 +27,19 @@ public class DAO<VO> {
       this.entityManager.getTransaction().begin();
    }
    public void confirmarTransacao() throws PersistenciaException {
-      this.entityManager.getTransaction().commit();
-   }
+       try {
+           this.entityManager.getTransaction().commit();
+       } catch (HibernateException he){
+           he.printStackTrace();  
+    
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+         
+    }  
+
+      
+
    public void cancelarTransacao() throws PersistenciaException{
       this.entityManager.getTransaction().rollback();
    }

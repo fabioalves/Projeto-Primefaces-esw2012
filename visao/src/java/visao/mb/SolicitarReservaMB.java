@@ -61,22 +61,29 @@ public class SolicitarReservaMB {
         return "detalhesHospedaria";
     }
     
-    public String reservar() throws NegocioException
-    {
+    public String reservar(HospedariaVO hospedariaVO) throws NegocioException
+    {       
         HospedagemVO hospVO = new HospedagemVO();
+        
         hospVO.setDiaInicio(periodo1);
         hospVO.setDiaFim(periodo2);
-        hospVO.setHospedaria(hospedariaSelecionada);
+        hospVO.setHospedaria(hospedariaVO);
         
         UsuarioVO usuarioVO = (UsuarioVO) Util.getSession("usuario");
-        
-        hospVO.setUsuario(usuarioVO);
-        hospVO.setSituacao('0');
-        hospVO.setComentario("");
-        
-        Hospedagem hospedagem = new Hospedagem();
-        hospedagem.reservar(hospVO);
-        return "confirmacaoHospedagem";
+        if(usuarioVO != null)
+        {
+            hospVO.setUsuario(usuarioVO);
+            hospVO.setSituacao('0');
+            hospVO.setComentario("");
+            hospVO.setAvaliacaoAnfitriao(0);
+            hospVO.setAvaliacaoHospede(0);
+
+            Hospedagem hospedagem = new Hospedagem();
+            hospedagem.reservar(hospVO);
+            return "sucessoReserva";
+        } else {
+            return "login";
+        }
     }
             
             
@@ -147,6 +154,7 @@ public class SolicitarReservaMB {
      * @return the hospedariaSelecionada
      */
     public HospedariaVO getHospedariaSelecionada() {
+        hospedariaSelecionada = (HospedariaVO) Util.getSession("hospedariaSelecionada");
         return hospedariaSelecionada;
     }
 

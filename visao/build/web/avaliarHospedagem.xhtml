@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="titulo">
+        titulo
+    </ui:define>
+
+    <ui:define name="conteudo">
+        <p:panel header="Selecione a Reserva">
+            <h:dataTable id="dtReservas" value="#{reservaMB.getReservasUsuario()}" var="res">
+                <h:column>
+                    <f:facet name="header">Hospedaria</f:facet>
+                    <h:outputText value="#{res.hospedaria.nome}" />
+                </h:column>   
+                <h:column>
+                    <f:facet name="header">Inicio</f:facet>
+                    <h:outputText value="#{res.diaInicio}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fim</f:facet>
+                    <h:outputText value="#{res.diaFim}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Situação</f:facet>
+                    <h:outputText value="#{reservaMB.getSituacaoReserva(res.situacao)}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Avaliar</f:facet>
+                    <h:form>
+                        <p:commandLink value="Avaliar" onclick="dlg2.show()" />
+                    </h:form>
+                    
+                    <h:form id="avaliar">
+                        <p:dialog id="modalDialog" header="Avalie a Hospedagem" widgetVar="dlg2" modal="true" height="100">  
+                            <p>
+                                Avaliação:
+                                <h:selectOneListbox size="1" value="${reservaMB.avaliacaoHospede}">
+                                    <f:selectItem itemLabel="1" itemValue="1" />
+                                    <f:selectItem itemLabel="2" itemValue="2" />
+                                    <f:selectItem itemLabel="3" itemValue="3" />
+                                    <f:selectItem itemLabel="4" itemValue="4" />
+                                    <f:selectItem itemLabel="5" itemValue="5" />
+                                </h:selectOneListbox>
+                            </p>
+                            <p>
+                                <p:commandButton action="#{reservaMB.avaliacaoHospede()}" value="Salvar" />
+                            </p>
+                        </p:dialog> 
+                    </h:form> 
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Avaliação</f:facet>
+                    <h:outputText value="#{res.avaliacaoHospede}" />
+                </h:column>
+            </h:dataTable>
+            
+        </p:panel>
+    </ui:define>
+
+</ui:composition>

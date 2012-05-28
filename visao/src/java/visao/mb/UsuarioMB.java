@@ -14,7 +14,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class UsuarioMB {
-
+    
     /**
      * Creates a new instance of UsuarioMB
      */

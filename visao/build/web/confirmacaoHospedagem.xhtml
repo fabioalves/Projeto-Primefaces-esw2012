@@ -5,16 +5,21 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://java.sun.com/jsf/html">
 
-    <ui:define name="content">
+    <ui:define name="conteudo">
+        <h:form>
         <p:panel header="Reserva Realizada">
             <h3>
                 Hospedaria: <h:outputText value="#{solicitarReservaMB.hospedariaSelecionada.nome}" />
             </h3>
             <p>
-                Período de: <h:outputText value="#{solicitarReservaMB.periodo1}" /> 
-                até <h:outputText value="#{solicitarReservaMB.periodo2}" />                
+                Período de: <p:calendar showButtonPanel="true" id="periodo1" value="#{solicitarReservaMB.periodo1}" />
+                até <p:calendar showButtonPanel="true" id="periodo2" value="#{solicitarReservaMB.periodo2}" />                
             </p>  
+            <p>
+                <p:commandButton action="#{solicitarReservaMB.reservar(hospedariaSelecionada)}" value="Confirmar" />
+            </p>
         </p:panel>
+        </h:form>
     </ui:define>
 
 </ui:composition>

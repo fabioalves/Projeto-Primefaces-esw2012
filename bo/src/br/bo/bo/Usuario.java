@@ -13,6 +13,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.hibernate.Transaction;
+import org.hibernate.Session;
+import br.bo.util.SessionFactoryUtil;
 
 /**
  *
@@ -54,18 +57,28 @@ public class Usuario {
 
     public void inserir(UsuarioVO usuarioVO) throws NegocioException {
 
+
+        String senha=usuarioVO.getSenha();
+        try {
+                senha = Util.gerarHashMD5(senha);
+            } catch (NoSuchAlgorithmException ex) {
+                System.out.println(ex.getMessage());
+            }
+        usuarioVO.setSenha(senha);
+
         String mensagemErros = this.validarDados(usuarioVO);
 
         if (!mensagemErros.isEmpty()) {
             throw new NegocioException(mensagemErros);
         }
-
+        
         try {
-            usuarioDAO.iniciarTransacao();
-            usuarioDAO.incluir(usuarioVO);
-            usuarioDAO.confirmarTransacao();
+            this.usuarioDAO.iniciarTransacao();
+            this.usuarioDAO.incluir(usuarioVO);
+            this.usuarioDAO.confirmarTransacao();
         } catch (PersistenciaException ex) {
-            throw new NegocioException("Erro ao incluir novo grupo de produto - " + ex.getMessage());
+            
+            throw new NegocioException("Erro ao incluir novo usuário - " + ex.getMessage());
         }
     }
 

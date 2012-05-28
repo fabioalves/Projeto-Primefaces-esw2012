@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        
+        <navigation-case>
+            <description>paginaInicial</description>
+            <from-outcome>paginaInicial</from-outcome>
+            <to-view-id>/paginaInicial.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <description>login</description>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/index.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <description>solicitarReserva</description>
+            <from-outcome>solicitarReserva</from-outcome>
+            <to-view-id>/solicitarReserva.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <description>detalhesHospedaria</description>
+            <from-outcome>detalhesHospedaria</from-outcome>
+            <to-view-id>/detalhesHospedaria.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <description>listarHospedarias</description>
+            <from-outcome>listarHospedarias</from-outcome>
+            <to-view-id>/listarHospedarias.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <description>consultarReservaHospedaria</description>
+            <from-outcome>consultarReservaHospedaria</from-outcome>
+            <to-view-id>/consultarReservaHospedaria.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        
+        
+    </navigation-rule>
+</faces-config>

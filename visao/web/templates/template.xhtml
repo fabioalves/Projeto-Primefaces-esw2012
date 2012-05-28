@@ -8,55 +8,127 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
-         <link type="text/css" rel="stylesheet" href="../themes/bluesky/skin.css" />
-        <title>Facelets Template</title>
+        <link href="resources/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../themes/bluesky/skin.css" rel="stylesheet" type="text/css"  />
+        <title><ui:insert name="titulo">LugarPraFicar.com</ui:insert></title>
     </h:head>
 
     <h:body>
-        <f:view>
-    <p:layout fullPage="true">
-        <p:layoutUnit position="north" size="100" header="" resizable="false" closable="false" collapsible="false">               
-        <h:form id="logout">
-            Bem vindo, 
-            <h:outputText id="email" value="#{autenticacaoMB.usuarioVO.nome}" />.
-            <h:commandButton id="logout" value="Sair" 
-                           action="#{autenticacaoMB.logout()}" />
-        </h:form>
-    </p:layoutUnit>
         
-    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
-        <h:outputText value="South unit content." />
-    </p:layoutUnit>
-    
+    <div id="wrap">
         
-    <p:layoutUnit position="west" size="200" header="Menu" resizable="true" closable="true" collapsible="true">
-        <h:form id="menu">
-            <p:growl id="messages"/>
-            <p:menu style="width: 180px">  
-                <p:submenu label="Minhas Reservas">  
-                    <p:menuitem value="Solicitar Reserva" action="solicitarReserva"/>  
-                </p:submenu>  
-                <p:submenu label="Minhas Hospedarias">  
-                    <p:menuitem value="Consultar Reserva" action="listarHospedarias"/>  
-                </p:submenu>  
-                <p:submenu label="Navigations">  
-                    <p:menuitem value="Home" action="paginaInicial" icon="ui-icon-home"/>
-                </p:submenu>  
-            </p:menu> 
-        </h:form>
-    </p:layoutUnit>
+        <div class="header">
+            <div class="logo">
+                <a href="index.jsf"><img src="resources/images/logo.jpg" alt="" width="70" height="80" title=""  border="0" /></a>
+            </div>            
+            <div id="menu">
+                <ul>                                                                       
+                    <li class="selected"><a href="index.jsf">Pagina Inicial</a></li>
+                    <li><a href="cadastro.jsf">Cadastre-se</a></li>
+                    <li><a href="login.jsf">Login</a></li>
+                    <li><a href="listarHospedarias.jsf">Minhas Hospedarias</a></li>
+                    <li><a href="avaliarHospedagem.jsf">Minhas Reservas</a></li>
+                </ul>
+            </div>   
 
 
-    <p:layoutUnit position="center">
-        <div id="content">
-            <ui:insert name="content">Content</ui:insert>
+        </div> 
+
+        
+        <div class="center_content">
+            <div class="left_content">
+                <ui:insert name="conteudo">
+                    Conteúdo do Site
+                </ui:insert>
+            </div><!--end of left content-->
+
+            <div class="right_content">
+                <div class="languages_box">
+                    <span class="red">Languages:</span>
+                    <a href="#" class="selected"><img src="resources/images/gb.gif" alt="" title="" border="0" /></a>
+                    <a href="#"><img src="resources/images/fr.gif" alt="" title="" border="0" /></a>
+                    <a href="#"><img src="resources/images/de.gif" alt="" title="" border="0" /></a>
+                    <a href="cart.html">mais idiomas</a>
+                </div>
+
+            <div class="login">
+                
+                <h:form id="logout" rendered="#{autenticacaoMB.logado}" >
+
+                        <h:outputText value="Bem vindo, " />
+                        <h:outputText id="email" value="#{autenticacaoMB.usuarioVO.nome}" />
+                        <h:commandButton id="logout" value="Sair" action="#{autenticacaoMB.logout()}" />
+
+                        
+                </h:form>
+     
+            </div>
+
+                <div class="title">
+                    <span class="title_icon"></span>Como Funciona?
+                </div> 
+                <div class="about">
+                    <p>
+                    <img src="resources/images/about.gif" alt="" title="" class="right" />
+                    Quem procura um hotel ou algum lugar para se hospedar durante os jogos da Copa no Brasil deve se apressar.
+                                Isso por que a previsão dos pacotes de hospedagem estão sendo muito procurados e muitos já estão lotados.
+                    </p>
+
+                </div>
+
+                <div class="right_box">
+
+                    <div class="title"><span class="title_icon"></span>EVENTOS</div> 
+                        <div class="new_prod_box">
+                            <a href="details.html">Show em Cuiaba</a>
+                            <div class="new_prod_bg">
+                            <a href="details.html"><img src="resources/images/prod1.gif" alt="" width="130" height="100" title="" class="thumb" border="0" /></a>
+                            </div>           
+                        </div>
+
+
+
+                        <div class="new_prod_box">
+                            <a href="details.html">Teatro</a>
+                            <div class="new_prod_bg">
+                            <a href="details.html"><img src="resources/images/thumb3.gif" alt="" width="130" height="100" title="" class="thumb" border="0" /></a>
+                            </div>           
+                        </div>              
+
+                </div>
+
+                <div class="right_box">
+
+
+
+                    <div class="title"><span class="title_icon"><a href="#"><img src="resources/images/facebook.png" /></a></span> FACEBOOK</div> 
+                                    <div class="title"><span class="title_icon"><a href="#"><img src="resources/images/orkut.png" width="38" height="39" /></a></span> ORKUT</div> 
+                                    <div class="title"><span class="title_icon"><a href="#"><img src="resources/images/myspace.png" width="38" height="39" /></a></span> MYSPACE</div> 
+                                    <div class="title"><span class="title_icon"><a href="#"><img src="resources/images/twitter.png" /></a></span> TWITTER</div> 
+
+
+                </div>         
+
+
+            </div>
+
+
+
+            <div class="clear"></div>
         </div>
-    </p:layoutUnit>
 
-</p:layout>          
-            </f:view>
+        <div class="footer">
+            <div class="left_footer">
+                <div class="center_footer">
+                <a href="index.jsf">Pagina Inicial</a>
+                <a href="#">Ajuda</a>
+                <a href="#">privacy policy</a>
+                <a href="#">contatos</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
     </h:body>
 
 </html>

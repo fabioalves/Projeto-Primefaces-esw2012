@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+
+Project("{743DD554-C3A4-A6EE-FE7F-E478EB68ADA7}") = "JogoMemoria", "JogoMemoria.csproj", "{D5FA5ABD-9503-251C-5385-DD74C18A7A77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5FA5ABD-9503-251C-5385-DD74C18A7A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FA5ABD-9503-251C-5385-DD74C18A7A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FA5ABD-9503-251C-5385-DD74C18A7A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FA5ABD-9503-251C-5385-DD74C18A7A77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	
+EndGlobal

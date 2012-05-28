@@ -1,34 +1,194 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <p:layout fullPage="true">
-            <p:layoutUnit position="center" header="Login" width="800">
-                <p:panel header="Autenticação" style="width: 700;">
-                        <h:form>
-                            <p>
-                                <h:outputLabel id="msg" value="#{autenticacaoMB.msg}" />                                
-                            </p>
-                            <p>
-                                E-Mail: <h:inputText id="email" value="#{autenticacaoMB.email}" size="50" />
-                            </p>
-                            <p>
-                                Senha: <h:inputSecret id="senha" value="#{autenticacaoMB.senha}" size="30" />
-                            </p>
-                            <p>
-                                <h:commandButton id="btEntrar" value="Entrar" 
-                                                 action="#{autenticacaoMB.login}" />                
-                            </p>
-                        </h:form>
+<ui:composition  xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="templates/template.xhtml"
+                xmlns:util="http://java.sun.com/jsf/composite/util"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    
+    <ui:define name="conteudo">
+        <div class="user">
+            <h:outputText value="#{autenticacaoMB.situacaoLogin()}" />
+        </div>
+                <div class="title">
+                    <span class="title_icon"></span>Busca
+                </div>
+
+                <div style="display: block;" class="tab" id="tab1">
+                    <h:form id="frmBusca">
+                        
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Cidade:" />
+                            <h:selectOneMenu id="cidade" value="#{hospedariaMB.cidadeSelecionada}">
+                                <f:selectItem itemLabel="Escolha a Cidade" itemValue="" />
+                                <f:selectItems value="#{hospedariaMB.cidades}"/>
+                                <p:ajax update=":frmHosp:panelHospedarias" listener="#{hospedariaMB.listenerBusca()}" />
+
+                            </h:selectOneMenu>
+
+                        </h:panelGrid>
+                        
+                    </h:form>
+                    
+                </div>	
+
+
+                <div class="title">
+                    <span class="title_icon"></span>Hospedaria
+                </div>
+
+        
+        <h:form id="frmHosp">
+            
+            <p:panel id="panelHospedarias">
+                <p:dataGrid value="#{hospedariaMB.listHospedaria}" 
+                            var="hospedaria" 
+                            columns="1"
+                            rows="5"
+                            paginator="true"
+                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="5,10,15">
+
+
+                        <p:column>
+                            <p:panel header="#{hospedaria.nome}" style="text-align:center">
+                                <h:panelGrid columns="3" style="width:100% ">
+                                    <p:graphicImage value="/fotos/#{hospedaria.foto}" width="90" height="110" />
+                                    <h:outputText value="#{hospedaria.descricao}"/>
+                                    <h:outputText value=" " />
+                                    <p:commandButton value="Detalhes" 
+                                                   update=":frmHosp:hospDetalhe" 
+                                                   actionListener="#{hospedariaMB.detalheHospedaria()}"
+                                                   oncomplete="hospDialog.show()"/>
+                                    <p:commandButton action="#{hospedariaMB.reservar()}" value="Reservar" />
+
+                                </h:panelGrid>
+
+                            </p:panel>
+                        </p:column>
+
+                    </p:dataGrid>
                 </p:panel>
-        </p:layoutUnit>
-        </p:layout>
-    </h:body>
-</html>
+        
+
+        
+            <p:dialog header="Detalhes da Hospedaria" widgetVar="hospDialog" modal="true">
+                <p:outputPanel id="hospDetalhe">
+                    <h:form id="frmDetalhe">
+                        
+                        <p:panelGrid columns="2">
+                            <h:outputLabel value="Nome:" />
+                            <h:outputText value="#{hospedariaMB.hospedariaSelecionada.nome}" />
+                            
+                            <h:outputLabel value="Endereço:" />
+                            <h:outputText value="#{hospedariaMB.hospedariaSelecionada.endereco}" />
+                            
+                            <h:outputLabel value="Bairro:"/>
+                            <h:outputText value="#{hospedariaMB.hospedariaSelecionada.bairro}" />
+                            
+                            <h:outputLabel value="CEP:" /> 
+                            <h:outputText value="#{hospedariaMB.hospedariaSelecionada.cep}" />
+            
+                            <h:outputLabel value="Telefone: " />
+                            <h:outputText value="#{hospedariaMB.hospedariaSelecionada.telefone}" />
+            
+                            <h:outputLabel value="Celular: "/>
+                            <h:outputText value="#{hospedariaMB.hospedariaSelecionada.celular}" />
+                            
+                            <h:outputLabel value="Valor da Diária: R$"/>
+                            <h:outputText value="#{hospedariaMB.hospedariaSelecionada.valorDiaria}" />
+                            
+                        </p:panelGrid>
+                        
+                    </h:form>    
+
+                </p:outputPanel>
+                    
+
+            </p:dialog>
+        </h:form>        
+        
+    
+
+
+                <div id="demo" class="demolayout">
+
+                    <ul id="demo-nav" class="demolayout">
+                    <li><a class="active" href="#tab1">Mais Bem Avaliados</a></li>
+                    <li><a class="" href="#tab2">Mais Reservados</a></li>
+                    </ul>
+
+                    <div class="tabs-container">
+
+
+
+                        <div class="new_products">
+
+                            <div class="new_prod_box">
+                                <a href="details.html">Hospedaria da Rosa</a>
+                                <div class="new_prod_bg">
+                                <a href="details.html"><img src="resources/images/lugar3.jpg" alt="" width="120" height="100" title="" class="thumb" border="0" /></a>
+                                </div>           
+                            </div>
+
+                            <div class="new_prod_box">
+                                <a href="details.html">Hospedaria tete</a>
+                                <div class="new_prod_bg">
+
+                                <a href="details.html"><img src="resources/images/lugar4.jpg" alt="" width="120" height="100" title="" class="thumb" border="0" /></a>
+                                </div>           
+                            </div>                    
+
+                            <div class="new_prod_box">
+                                <a href="details.html">Hospedaria Vitor</a>
+                                <div class="new_prod_bg">
+                                <a href="details.html"><img src="resources/images/lugar6.jpg" alt="" width="120" height="100" title="" class="thumb" border="0" /></a>
+                                </div>           
+                            </div>          
+
+                        </div> 
+
+
+                        <div style="display: none;" class="tab" id="tab2">
+                            <div class="new_prod_box">
+                                <a href="details.html">Mais Reservado</a>
+                                                        <div class="new_prod_bg">
+                                <a href="details.html"><img src="resources/images/lugar1.jpg" alt="" title="" class="thumb" border="0" /></a>
+                                </div>           
+                            </div>
+
+                            <div class="new_prod_box">
+                                <a href="details.html">product name</a>
+                                <div class="new_prod_bg">
+                                <a href="details.html"><img src="resources/images/lugar2.jpg" alt="" title="" class="thumb" border="0" /></a>
+                                </div>           
+                            </div>                    
+
+                            <div class="new_prod_box">
+                                <a href="details.html">product name</a>
+                                <div class="new_prod_bg">
+                                <a href="details.html"><img src="resources/images/lugar3.jpg" alt="" title="" class="thumb" border="0" /></a>
+                                </div>           
+                            </div>    
+
+
+                            <div class="clear"></div>
+                        </div>	
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="clear"></div>
+                
+    </ui:define>
+
+    
+</ui:composition>
+
+
 

@@ -7,33 +7,30 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
+    <application>
+        <resource-bundle>
+            <base-name>i18N</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
-        
         <navigation-case>
-            <description>paginaInicial</description>
-            <from-outcome>paginaInicial</from-outcome>
-            <to-view-id>/paginaInicial.jsf</to-view-id>
-            <redirect/>
-        </navigation-case>
-
-        <navigation-case>
-            <description>login</description>
-            <from-outcome>login</from-outcome>
+            <description>principal</description>
+            <from-outcome>principal</from-outcome>
             <to-view-id>/index.jsf</to-view-id>
-            <redirect/>
-        </navigation-case>
-        
+        </navigation-case>        
         <navigation-case>
-            <description>solicitarReserva</description>
-            <from-outcome>solicitarReserva</from-outcome>
-            <to-view-id>/solicitarReserva.jsf</to-view-id>
+            <description>confirmarHospedagem</description>
+            <from-outcome>confirmarHospedagem</from-outcome>
+            <to-view-id>/confirmacaoHospedagem.jsf</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
-            <description>detalhesHospedaria</description>
-            <from-outcome>detalhesHospedaria</from-outcome>
-            <to-view-id>/detalhesHospedaria.jsf</to-view-id>
+            <description>sucessoReserva</description>
+            <from-outcome>sucessoReserva</from-outcome>
+            <to-view-id>/sucessoReserva.jsf</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -42,15 +39,24 @@
             <to-view-id>/listarHospedarias.jsf</to-view-id>
             <redirect/>
         </navigation-case>
-        
+        <navigation-case>
+            <description>avaliarHospedagem</description>
+            <from-outcome>avaliarHospedagem</from-outcome>
+            <to-view-id>/avaliarHospedagem.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
         <navigation-case>
             <description>consultarReservaHospedaria</description>
             <from-outcome>consultarReservaHospedaria</from-outcome>
             <to-view-id>/consultarReservaHospedaria.jsf</to-view-id>
             <redirect/>
         </navigation-case>
-        
-        
-        
+        <navigation-case>
+            <description>login</description>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.jsf</to-view-id>
+            <redirect/>
+        </navigation-case>
     </navigation-rule>
+
 </faces-config>

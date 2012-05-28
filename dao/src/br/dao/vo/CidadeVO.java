@@ -54,5 +54,9 @@ public class CidadeVO
     public void setUf(String uf) {
         this.uf = uf;
     }
-            
+      
+    @Override
+    public String toString(){
+        return this.nome;
+    }
 }

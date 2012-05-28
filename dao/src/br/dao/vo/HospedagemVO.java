@@ -41,6 +41,12 @@ public class HospedagemVO implements Serializable {
     
     @Column(length=400,nullable=false)
     private String comentario;
+    
+    @Column(length=1, nullable=true)
+    private int avaliacaoHospede;
+    
+    @Column(length=1, nullable=true)
+    private int avaliacaoAnfitriao;
 
     /**
      * @return the id
@@ -138,6 +144,34 @@ public class HospedagemVO implements Serializable {
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    /**
+     * @return the avaliacaoHospede
+     */
+    public int getAvaliacaoHospede() {
+        return avaliacaoHospede;
+    }
+
+    /**
+     * @param avaliacaoHospede the avaliacaoHospede to set
+     */
+    public void setAvaliacaoHospede(int avaliacaoHospede) {
+        this.avaliacaoHospede = avaliacaoHospede;
+    }
+
+    /**
+     * @return the avaliacaoAnfitriao
+     */
+    public int getAvaliacaoAnfitriao() {
+        return avaliacaoAnfitriao;
+    }
+
+    /**
+     * @param avaliacaoAnfitriao the avaliacaoAnfitriao to set
+     */
+    public void setAvaliacaoAnfitriao(int avaliacaoAnfitriao) {
+        this.avaliacaoAnfitriao = avaliacaoAnfitriao;
     }
 
    

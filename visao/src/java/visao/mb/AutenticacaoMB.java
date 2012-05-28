@@ -24,6 +24,7 @@ public class AutenticacaoMB {
     private String senha;
     private String msg;
     private UsuarioVO usuarioVO;
+    private boolean logado = false;
 
     /**
      * Creates a new instance of AutenticacaoMB
@@ -32,6 +33,16 @@ public class AutenticacaoMB {
         
     }    
     
+    public String situacaoLogin() {
+        UsuarioVO userVO = (UsuarioVO)Util.getSession("usuario");
+        
+        if(userVO != null) {
+            return "Logado como: "+userVO.getNome();
+        } else {
+            return "Não está logado";
+        }
+    }
+    
     public String login() throws PersistenciaException {
         
         try {
@@ -39,8 +50,8 @@ public class AutenticacaoMB {
             setUsuarioVO(usuario.login(email, senha));
             
             Util.setSession("usuario", usuarioVO);
-            
-            return "paginaInicial"; 
+            this.logado = true;
+            return "index"; 
         
         } catch(NegocioException ex) {
             msg = ex.getMessage();            
@@ -54,8 +65,8 @@ public class AutenticacaoMB {
     
     public String logout() {
         this.setUsuarioVO(null);
-        
-        return "login";
+        this.logado = false;
+        return "index";
     }
     
             
@@ -128,5 +139,19 @@ public class AutenticacaoMB {
      */
     public void setUsuarioVO(UsuarioVO usuarioVO) {
         this.usuarioVO = usuarioVO;
+    }
+
+    /**
+     * @return the logado
+     */
+    public boolean isLogado() {
+        return logado;
+    }
+
+    /**
+     * @param logado the logado to set
+     */
+    public void setLogado(boolean logado) {
+        this.logado = logado;
     }
 }

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./templates/template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="busca">
+            <p>
+            Local:
+            <h:inputText id="txtlocal" value="#{solicitarReservaMB.cidadeVO.nome}" />
+            </p>
+            <p>
+                Período:
+                de <p:calendar value="#{solicitarReservaMB.periodo1}" id="periodo1" showButtonPanel="true"/> 
+                até <p:calendar value="#{solicitarReservaMB.periodo2}" id="periodo2" showButtonPanel="true"/>  
+            </p>
+            <p>
+                <p:commandButton value="Buscar" type="submit" action="#{solicitarReservaMB.buscar()}"/>
+            </p>
+        
+            <p>            
+                <h:dataTable id="datalist" value="#{solicitarReservaMB.listHospedaria}" var="hosp">  
+                    <h:column>
+                        <f:facet name="header">Nome:</f:facet>
+                            <h:outputText value="#{hosp.nome}" />                        
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputText value="#{hosp.cidade.nome}" />                        
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Selecionar</f:facet>
+                        <h:commandLink id="selecionar" value="Selecionar" action="#{solicitarReservaMB.selecionar()}"/>
+                    </h:column>
+                </h:dataTable>  
+            </p>
+       </h:form>
+    </ui:define>
+
+</ui:composition>

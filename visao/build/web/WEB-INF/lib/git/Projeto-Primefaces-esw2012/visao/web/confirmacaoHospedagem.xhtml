@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="content">
+        <p:panel header="Reserva Realizada">
+            <h3>
+                Hospedaria: <h:outputText value="#{solicitarReservaMB.hospedariaSelecionada.nome}" />
+            </h3>
+            <p>
+                Período de: <h:outputText value="#{solicitarReservaMB.periodo1}" /> 
+                até <h:outputText value="#{solicitarReservaMB.periodo2}" />                
+            </p>  
+        </p:panel>
+    </ui:define>
+
+</ui:composition>

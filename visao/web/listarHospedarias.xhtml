@@ -6,9 +6,9 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core">
 
-    <ui:define name="content">
+    <ui:define name="conteudo">
         <p:panel header="Selecione a Hospedaria">
-            <h:dataTable id="dtHospedarias" value="#{hospedariaMB.listHospedaria}" var="hosp">
+            <h:dataTable id="dtHospedarias" value="#{hospedariaUsuarioMB.getHospedariasUsuario()}" var="hosp">
                 <h:column>
                     <f:facet name="header">Nome</f:facet>
                     <h:outputText value="#{hosp.nome}" />
@@ -16,7 +16,7 @@
                 <h:column>
                     <f:facet name="header">Selecionar</f:facet>
                     <h:form id="selecionarHosp">
-                        <h:commandLink value="Selecionar" action="#{hospedariaMB.selecionarHospedaria(hosp)}" />
+                        <h:commandLink value="Selecionar" action="#{hospedariaUsuarioMB.selecionarHospedaria(hosp.id)}" />
                     </h:form>
                 </h:column>
             </h:dataTable>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+        <p:panel header="Consulta de reservas">
+            <h:dataTable value="#{reservaMB.listReserva}" var="reserva">
+                <h:column>
+                    <f:facet name="header">Dia Início</f:facet>
+                    <h:outputText value="#{reserva.diaInicio.toLocaleString()}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Dia Fim</f:facet>
+                    <h:outputText value="#{reserva.diaFim.toLocaleString()}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Situação</f:facet>
+                    <h:outputText value="#{reservaMB.getSituacaoReserva(reserva.situacao)}"/>
+                </h:column>
+                
+                    
+                        <h:column>
+                            <h:form id="frmaprovar">
+                            <f:facet name="header">Aprovar</f:facet>
+                            <h:commandLink value="Aprovar" action="#{reservaMB.aprovar()}" />
+                            </h:form>
+                        </h:column>
+                        <h:column>
+                            <h:form id="frmreprovar">
+                            <f:facet name="header">Não Aprovar</f:facet>
+                            <h:commandLink value="Não Aprovar" action="#{reservaMB.naoAprovar()}"/>
+                            </h:form>
+                        </h:column>
+                            
+                    
+            </h:dataTable>
+        </p:panel>
+    </ui:define>
+
+</ui:composition>

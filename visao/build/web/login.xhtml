@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="templates/template.xhtml"
+                xmlns:util="http://java.sun.com/jsf/composite/util"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="conteudo">
+        <p:panel header="Autenticação" style="width: 700;">
+            <h:form>
+                <h:outputLabel id="msg" value="#{autenticacaoMB.msg}" />                                
+
+                <h:panelGrid columns="2">
+                    E-Mail: <h:inputText id="email" value="#{autenticacaoMB.email}" size="30" />
+                    Senha: <h:inputSecret id="senha" value="#{autenticacaoMB.senha}" size="30" />
+                    <h:commandButton id="btEntrar" value="Entrar" action="#{autenticacaoMB.login}" />                
+                </h:panelGrid>
+                
+            </h:form>
+        </p:panel>
+    </ui:define>
+    
+
+    
+</ui:composition>
+

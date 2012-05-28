@@ -28,14 +28,18 @@ public class HospedariaVO
     private CidadeVO cidade;
     @Column(length=15,nullable=false)
     private String cep;
-    @Column(length=10,nullable=false)
+    @Column(length=15,nullable=false)
     private String telefone;
-    @Column(length=10,nullable=false)
+    @Column(length=15,nullable=false)
     private String celular;
     @Column(length=100,nullable=false)
     private String localizacaoGeografica;
     @Column(nullable=false,precision=5,scale=2)
     private float valorDiaria;
+    @Column(length=100,nullable=false)
+    private String foto;
+    @Column(length=255,nullable=false)
+    private String descricao;
     
     @ManyToOne(fetch= FetchType.EAGER)
     private UsuarioVO usuarioVO;
@@ -193,4 +197,34 @@ public class HospedariaVO
     public void setUsuarioVO(UsuarioVO usuarioVO) {
         this.usuarioVO = usuarioVO;
     }
+
+    /**
+     * @return the foto
+     */
+    public String getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    /**
+     * @return the descricao
+     */
+    public String getDescricao() {
+        return descricao;
+    }
+
+    /**
+     * @param descricao the descricao to set
+     */
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+    
 }

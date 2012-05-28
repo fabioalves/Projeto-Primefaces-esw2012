@@ -38,5 +38,15 @@ public class teste {
         
         * 
         */
+        
+        Usuario us = new Usuario();
+        UsuarioVO e = us.login("teste", "123");
+        
+        
+        
+        System.out.println("");
+        System.out.println("----------------------------------");
+        System.out.println( e.getId() + " - " + e.getNome() );
+        System.out.println("----------------------------------");
     }
 }
